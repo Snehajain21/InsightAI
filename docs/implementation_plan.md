@@ -10,35 +10,34 @@
 
 ## Frontend
 
-- React.js
-- HTML
-- CSS
-- JavaScript
+* React.js
+* HTML
+* CSS
+* JavaScript
 
 ## Backend
 
-- FastAPI
-- Uvicorn
+* FastAPI
+* Uvicorn
 
 ## AI Integration
 
-- Google Gemini API
+* Google Gemini API
 
 ## Database
 
-- SQLite
-- SQLModel
+* SQLite
 
 ## Version Control
 
-- Git
-- GitHub
+* Git
+* GitHub
 
 ---
 
 # Project Folder Structure
 
-```
+```text
 InsightAI/
 
 backend/
@@ -46,11 +45,9 @@ backend/
 ├── app/
 │   ├── api/
 │   ├── services/
-│   ├── prompts/
 │   ├── database/
 │   ├── models/
 │   ├── schemas/
-│   ├── utils/
 │   ├── config.py
 │   └── main.py
 │
@@ -72,7 +69,7 @@ README.md
 
 ---
 
-# Backend Modules
+### Backend Modules
 
 ## 1. API Module
 
@@ -80,106 +77,60 @@ Responsible for exposing REST APIs to the frontend.
 
 Planned APIs:
 
-- Start Assessment
-- Submit Answer
-- Generate Report
-- Get Assessment History
+* Start Assessment
+* Submit Assessment
+* Get Assessment Report
 
 ---
 
-## 2. Assessment Engine
+## 2. AI Service
+
+The AI Service will manage all interactions with the Google Gemini API.
 
 Responsibilities:
 
-- Manage assessment stages
-- Track assessment progress
-- Decide next assessment category
-- Maintain session flow
+* Generate assessment questions
+* Evaluate student responses
+* Generate the final assessment summary
+* Handle Gemini API communication and errors
 
 ---
 
-## 3. Gemini Service
+## 3. Database Module
 
 Responsibilities:
 
-- Connect with Gemini API
-- Send prompts
-- Receive AI responses
-- Handle API errors
-
----
-
-## 4. Prompt Manager
-
-Responsibilities:
-
-- Generate structured prompts
-- Separate prompts for each assessment stage
-- Maintain prompt consistency
-
----
-
-## 5. Report Generator
-
-Responsibilities:
-
-- Generate final report
-- Calculate skill ratings
-- Prepare recommendations
-- Create growth summary
-
----
-
-## 6. Database Module
-
-Responsibilities:
-
-- Store student profiles
-- Store assessment sessions
-- Store responses
-- Store generated reports
-
----
+* Store assessment sessions
+* Store student responses
+* Store generated assessment reports
+ ---
 
 # Frontend Modules
 
 ## Home Page
 
-Project introduction and assessment start.
+Displays project information and allows the student to start an assessment.
 
 ---
 
-## Student Profile Page
+## Assessment Page
 
-Collect:
+The student:
 
-- Name
-- Skills
-- Interests
-- Career Goal
-- Self Confidence
+* Enters their name
+* Selects one skill or technology
+* Answers 3–5 assessment questions
 
 ---
 
-## Assessment Chat Interface
+## Report Page
 
-Display:
+Displays:
 
-- AI Questions
-- Student Responses
-- Progress Indicator
-
----
-
-## Final Report Page
-
-Display:
-
-- Skill Ratings
-- Strengths
-- Weaknesses
-- Recommendations
-- Growth Summary
+* Overall Rating
+* Strengths
+* Areas for Improvement
+* Learning Recommendations
 
 ---
 
@@ -193,69 +144,43 @@ Creates a new assessment session.
 
 ## POST /assessment/answer
 
-Receives student answer and generates the next assessment question.
+Saves the student's answer for the current question.
 
 ---
 
-## POST /assessment/report
+ ## POST /assessment/report
 
-Generates the final assessment report.
-
----
-
-## GET /assessment/history
-
-Returns previous assessment reports.
+Generates the final assessment report after all questions are answered.
 
 ---
-
 # Database Tables
-
-## Student
-
-- id
-- name
-- skills
-- interests
-- career_goal
-
----
 
 ## AssessmentSession
 
+Stores information about each assessment session.
+
+Fields:
+
 - id
-- student_id
-- current_stage
-- started_at
-- completed_at
+- student_name
+- selected_skill
+- overall_rating
+- summary_report
+- created_at
 
 ---
 
-## AssessmentResponse
+## AssessmentAnswer
+
+Stores each assessment question and the student's response.
+
+Fields:
 
 - id
 - session_id
 - question
 - answer
 - evaluation
-
----
-
-## AssessmentReport
-
-- id
-- session_id
-- technical_score
-- confidence_score
-- communication_score
-- problem_solving_score
-- learning_mindset_score
-- career_readiness_score
-- strengths
-- weaknesses
-- recommendations
-
----
 
 # Development Milestones
 
@@ -273,61 +198,53 @@ Backend Setup
 
 ## Milestone 3
 
-Gemini Integration
+Gemini API Integration
 
 ---
 
 ## Milestone 4
 
-Assessment Engine
+Frontend Development
 
 ---
 
 ## Milestone 5
 
-Frontend Development
+Database Integration
 
 ---
 
 ## Milestone 6
 
-Database Integration
+Testing & Bug Fixes
 
 ---
 
 ## Milestone 7
 
-Testing & Bug Fixes
-
----
-
-## Milestone 8
-
-Final Review & Deployment
+Final Review
 
 ---
 
 # Testing Plan
 
-Testing will include:
+The project will be tested for:
 
-- API Testing
-- AI Response Validation
-- Assessment Flow Testing
-- Database Testing
-- Frontend Integration Testing
-- Error Handling
-- Invalid Input Testing
+* API functionality
+* Gemini API integration
+* Assessment workflow
+* Database operations
+* Frontend integration
+* Error handling
 
 ---
 
 # Expected Deliverables
 
-- AI Student Skill Analyzer
-- FastAPI Backend
-- React Frontend
-- Gemini AI Integration
-- Student Assessment Engine
-- AI-generated Assessment Reports
-- Complete Project Documentation
-- GitHub Repository
+* AI Student Skill Analyzer
+* FastAPI Backend
+* React Frontend
+* Gemini API Integration
+* AI-generated Assessment Report
+* Project Documentation
+* GitHub Repository

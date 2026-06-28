@@ -8,9 +8,9 @@
 
 # System Overview
 
-InsightAI follows a client-server architecture where the frontend provides an interactive assessment interface, the backend manages the assessment workflow and business logic, and the Gemini API generates intelligent questions, evaluates responses, and creates personalized student reports.
+InsightAI follows a client-server architecture where the frontend provides a simple chatbot interface, the backend manages user requests and communicates with the Gemini API, and the AI generates both the assessment questions and the final summary report.
 
-The system is designed using a modular architecture to ensure scalability, maintainability, and easy feature expansion.
+The architecture is intentionally kept simple for the initial version while allowing future enhancements.
 
 ---
 
@@ -18,13 +18,13 @@ The system is designed using a modular architecture to ensure scalability, maint
 
 ```
                 +----------------------+
-                |        Student       |
+                |       Student        |
                 +----------+-----------+
                            |
                            v
                 +----------------------+
-                |   React Frontend     |
-                |  (User Interface)    |
+                |    React Frontend    |
+                |   (Chat Interface)   |
                 +----------+-----------+
                            |
                     HTTP Requests
@@ -34,23 +34,15 @@ The system is designed using a modular architecture to ensure scalability, maint
                 |    FastAPI Backend   |
                 +----------+-----------+
                            |
-          +----------------+----------------+
-          |                |                |
-          v                v                v
-+----------------+ +----------------+ +----------------+
-| Assessment     | | Gemini Service | | Report         |
-| Engine         | |                | | Generator      |
-+----------------+ +----------------+ +----------------+
-          |                |                |
-          +----------------+----------------+
-                           |
                            v
-                  Google Gemini API
+                +----------------------+
+                |    Gemini Service    |
+                +----------+-----------+
                            |
                            v
                 +----------------------+
-                |  AI Generated Output |
-                +----------------------+
+                | Google Gemini API    |
+                +----------+-----------+
                            |
                            v
                 +----------------------+
@@ -64,130 +56,81 @@ The system is designed using a modular architecture to ensure scalability, maint
 
 ## 1. Frontend
 
-The frontend provides an interactive interface where students can:
+The frontend provides a simple chatbot interface where students can:
 
-- Enter their profile information
-- Answer AI-generated assessment questions
-- View assessment progress
-- View the final assessment report
+* Enter one skill or technology (e.g., Python)
+* Answer 3–5 assessment questions
+* View the final assessment report
 
-Technology:
+**Technology:**
 
-- React.js
+* React.js
 
 ---
 
 ## 2. Backend
 
-The backend controls the complete assessment workflow.
+The backend manages the assessment workflow.
 
 Responsibilities:
 
-- Receive user requests
-- Validate input
-- Manage assessment stages
-- Generate prompts
-- Communicate with Gemini API
-- Process AI responses
-- Generate final reports
-- Store assessment data
+* Receive user requests
+* Validate user input
+* Send prompts to the Gemini API
+* Receive AI responses
+* Generate the final report
+* Store assessment results
 
-Technology:
+**Technology:**
 
-- FastAPI
+* FastAPI
 
 ---
 
-## 3. Assessment Engine
-
-The Assessment Engine is the core module of the application.
-
-It is responsible for:
-
-- Managing assessment stages
-- Tracking user progress
-- Selecting the next assessment category
-- Preparing structured prompts
-- Passing data to the Gemini API
-
----
-
-## 4. Gemini API
+## 3. Gemini API
 
 The Gemini API is responsible for:
 
-- Generating adaptive assessment questions
-- Evaluating student responses
-- Identifying strengths and weaknesses
-- Generating personalized recommendations
-- Producing the final assessment summary
+* Generating assessment questions
+* Evaluating student responses
+* Generating the final summary report
+* Providing learning recommendations
 
 ---
 
-## 5. Report Generator
-
-The Report Generator converts the AI evaluation into a structured report containing:
-
-- Skill Ratings
-- Technical Strengths
-- Areas for Improvement
-- Confidence Analysis
-- Learning Mindset
-- Career Readiness
-- Growth Summary
-- Learning Recommendations
-
----
-
-## 6. Database
+## 4. Database
 
 The database stores:
 
-- Student Profile
-- Assessment Responses
-- Assessment Scores
-- Final Reports
-- Assessment History
+* Student Name
+* Selected Skill
+* Assessment Responses
+* Final Assessment Report
 
-Technology:
+**Technology:**
 
-- SQLite
+* SQLite
 
 ---
 
 # Assessment Workflow
 
-1. Student enters profile details.
-2. Backend creates an assessment session.
-3. Assessment Engine determines the first assessment stage.
-4. Gemini generates an assessment question.
-5. Student submits a response.
-6. Backend sends the response to Gemini.
-7. Gemini evaluates the response.
-8. Assessment Engine updates the student's profile.
-9. Steps 4–8 continue until all assessment stages are completed.
-10. Report Generator prepares the final assessment report.
-11. The report is displayed to the student and stored in the database.
-
----
-
-# Assessment Stages
-
-1. Student Background
-2. Technical Knowledge
-3. Problem Solving
-4. Communication & Confidence
-5. Learning Mindset
-6. Final Skill Profiling Report
+1. Student enters their name and selects a skill or technology.
+2. Backend sends the selected skill to the Gemini API.
+3. Gemini generates 3–5 assessment questions.
+4. Student answers each question.
+5. Backend sends the responses to the Gemini API.
+6. Gemini evaluates the responses.
+7. The backend generates a summary report.
+8. The report is displayed to the student and stored in the database.
 
 ---
 
 # Design Principles
 
-- Modular Architecture
-- Separation of Concerns
-- Reusable Components
-- Scalable Backend
-- Secure API Integration
-- Maintainable Code Structure
-- Clear Assessment Workflow
+* Simple and Modular Architecture
+* Separation of Frontend and Backend
+* REST API Communication
+* Secure Gemini API Integration
+* Easy Future Scalability
+* Maintainable Code Structure

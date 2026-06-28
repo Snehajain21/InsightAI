@@ -8,21 +8,19 @@
 
 # Problem Statement
 
-Many Computer Science students learn multiple programming languages and technologies through college courses, online platforms, and personal projects. However, they often struggle to understand their actual skill level, identify their strengths and weaknesses, and determine what they should learn next.
+Many Computer Science students learn programming languages and technologies through courses and self-learning. However, they often find it difficult to assess their current level of understanding and identify the areas where they need improvement.
 
-Most existing AI chatbots simply answer user questions or provide learning resources. They do not analyze a student's current abilities or provide personalized feedback based on their technical knowledge, confidence, reasoning, and learning mindset.
+Most existing AI chatbots either answer questions or provide learning resources, but they do not offer a simple assessment of a student's knowledge in a selected technology.
 
-As a result, students often spend time learning technologies without knowing whether they are ready for interviews, projects, or real-world software development.
+As a result, students may continue learning without knowing whether they have understood the fundamentals or what topics they should focus on next.
 
 ---
 
 # Proposed Solution
 
-InsightAI is an AI-powered Student Skill Analyzer that interacts with students through a conversational assessment.
+InsightAI is an AI-powered chatbot that helps students evaluate their understanding of a selected programming skill or technology.
 
-Instead of acting as a traditional chatbot, InsightAI evaluates a student's technical knowledge, problem-solving ability, confidence, communication skills, learning mindset, and career readiness.
-
-Based on the student's responses, the chatbot generates a personalized assessment report highlighting strengths, weaknesses, skill ratings, and recommendations for future improvement.
+The student enters a skill (for example, Python, Java, or SQL), and the chatbot conducts a short assessment using a fixed set of 3–5 questions. After evaluating the student's responses using the Gemini API, the chatbot generates a summary report highlighting the student's strengths, areas for improvement, overall rating, and learning recommendations.
 
 ---
 
@@ -30,12 +28,11 @@ Based on the student's responses, the chatbot generates a personalized assessmen
 
 The primary objectives of InsightAI are:
 
-- Analyze a student's technical knowledge through conversational assessment.
-- Evaluate multiple skill dimensions beyond technical concepts.
-- Identify strengths and improvement areas.
-- Generate a personalized skill profile.
-- Recommend technologies, projects, and learning paths.
-- Help students understand their current readiness for technical careers.
+* Assess a student's understanding of a selected skill or technology.
+* Generate a simple AI-based evaluation.
+* Identify strengths and areas for improvement.
+* Provide an overall assessment rating.
+* Recommend topics for further learning.
 
 ---
 
@@ -45,29 +42,22 @@ The initial version of InsightAI will focus on Computer Science students.
 
 The chatbot will:
 
-- Collect student background and technical interests.
-- Conduct an AI-powered assessment.
-- Evaluate technical and behavioral responses.
-- Generate personalized assessment reports.
-- Provide learning recommendations based on the student's profile.
+* Allow the student to select or enter one skill or technology.
+* Ask a fixed sequence of 3–5 assessment questions.
+* Evaluate the student's responses using the Gemini API.
+* Generate a summary report with an overall rating and learning recommendations.
 
-Future versions may include resume analysis, voice interaction, authentication, and multi-domain assessments.
+Advanced features such as adaptive questioning, assessment history, authentication, resume analysis, and multi-domain assessments will be considered in future versions.
 
 ---
 
 # Expected Outcome
 
-After completing an assessment, every student should receive a structured report containing:
+After completing the assessment, the student will receive a report containing:
 
-- Technical Strengths
-- Technical Weaknesses
-- Confidence Assessment
-- Problem-Solving Assessment
-- Communication Assessment
-- Learning Mindset Analysis
-- Career Readiness Score
-- Personalized Learning Recommendations
-- Suggested Projects
-- Overall Skill Rating
+* Overall Rating
+* Strengths
+* Areas for Improvement
+* Learning Recommendations
 
-The final outcome is to provide students with a clear understanding of their current abilities and a roadmap for continuous improvement.
+The expected outcome is to help students understand their current level of knowledge in a selected technology and guide them toward the next steps in their learning journey.

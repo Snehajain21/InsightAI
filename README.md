@@ -1,48 +1,50 @@
 # InsightAI – AI Student Skill Analyzer 🚀
 
-InsightAI is an AI-powered Student Skill Analyzer designed for Computer Science students. Instead of simply answering questions, the chatbot evaluates a student's technical knowledge, confidence, problem-solving ability, and learning approach through an interactive conversation.
-
-Based on the assessment, InsightAI generates a personalized report highlighting the student's strengths, areas for improvement, skill ratings, and recommendations for future learning.
+InsightAI is an AI-powered chatbot designed for Computer Science students to assess their understanding of a selected programming skill or technology. The chatbot asks a fixed set of 3–5 assessment questions, evaluates the student's responses using the Google Gemini API, and generates a summary report with an overall rating, strengths, areas for improvement, and learning recommendations.
 
 ---
 
 ## 📌 Project Overview
 
-Many students know the technologies they have learned but are unsure about their actual proficiency. They often struggle to identify their strengths, weaknesses, and the next skills they should focus on.
+Many students learn programming languages and technologies but are unsure about their actual level of understanding. They often find it difficult to identify the topics they need to improve before moving on to more advanced concepts.
 
-InsightAI addresses this problem by conducting an AI-driven assessment that analyzes the student's current skill level and provides personalized guidance for improvement.
+InsightAI addresses this problem by providing a simple AI-powered assessment that helps students evaluate their knowledge and receive personalized learning recommendations.
 
 ---
 
 ## ✨ Features
 
-- 🤖 AI-powered interactive skill assessment
-- 💻 Technical skill evaluation
-- 🧠 Confidence and critical thinking assessment
-- 📊 Skill-wise rating generation
-- 💪 Strength and weakness analysis
-- 📈 Personalized learning recommendations
-- 🛠️ Project suggestions based on current skill level
-- 📄 AI-generated student assessment report
+* 🤖 AI-powered skill assessment
+* ❓ Fixed 3–5 question assessment flow
+* 📝 AI evaluation of student responses
+* ⭐ Overall assessment rating
+* 💪 Strengths and areas for improvement
+* 📚 Personalized learning recommendations
+* 📄 AI-generated assessment report
 
 ---
 
 ## 🛠️ Technology Stack
 
 ### Frontend
-- React.js
+
+* React.js
 
 ### Backend
-- FastAPI
+
+* FastAPI
 
 ### AI Model
-- Google Gemini API
+
+* Google Gemini API
 
 ### Database
-- SQLite
+
+* SQLite
 
 ### Version Control
-- Git & GitHub
+
+* Git & GitHub
 
 ---
 
@@ -63,12 +65,12 @@ InsightAI/
 
 ## 🚀 Future Enhancements
 
-- User authentication
-- Assessment history dashboard
-- Multi-domain assessments
-- Resume integration
-- Voice-based assessment
-- Performance analytics
+* Adaptive question generation
+* Assessment history
+* User authentication
+* Resume analysis
+* Voice-based assessment
+* Multi-domain assessments
 
 ---
 

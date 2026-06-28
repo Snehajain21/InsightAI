@@ -12,91 +12,86 @@ The system shall provide the following functionalities:
 
 ## 1. Student Profile Collection
 
-The chatbot shall allow students to provide:
+The chatbot shall allow the student to enter:
 
-- Technologies they know
-- Programming languages
-- Academic background
-- Career interests
-- Self-confidence level
-- Learning goals
+- Name
+- One skill or technology to be assessed (e.g., Python, Java, SQL)
 
 ---
 
 ## 2. AI-Based Assessment
 
-The chatbot shall conduct an interactive assessment by asking adaptive questions based on the student's responses.
+The chatbot shall conduct a simple AI-powered assessment using a fixed sequence of **3–5 questions** related to the student's selected skill or technology.
 
-The assessment will evaluate:
+For the initial version (MVP), the assessment will focus on evaluating:
 
-- Technical Knowledge
-- Problem-Solving Ability
-- Communication Skills
-- Confidence Level
-- Learning Mindset
-- Career Readiness
+* Technical Knowledge
+* Problem-Solving Ability
+* Confidence Level
+
+Based on the student's responses, the chatbot will generate a concise summary report highlighting strengths, areas for improvement, and an overall rating.
 
 ---
 
-## 3. Dynamic Question Generation
+## 3. Assessment Question Flow
 
-The chatbot shall dynamically generate follow-up questions using the Gemini API.
+The chatbot shall present a predefined sequence of assessment questions.
 
-Questions should adapt according to:
+The assessment flow will be:
 
-- User's skills
-- Previous answers
-- Current assessment progress
+1. Student enters a skill or technology (e.g., Python, Java, SQL).
+2. The chatbot asks 3–5 predefined assessment questions related to that skill.
+3. The student answers each question.
+4. Gemini API evaluates the responses.
+5. The chatbot generates a summary report containing:
+
+   * Overall Rating
+   * Strengths
+   * Areas for Improvement
+   * Learning Recommendations
+
+Adaptive questioning, personalized question generation, and multi-stage assessments will be considered as future enhancements.
+
 
 ---
 
 ## 4. Response Evaluation
 
-The chatbot shall analyze every response and identify:
+The chatbot shall evaluate each response based on:
 
-- Correct understanding
-- Concept clarity
-- Logical reasoning
-- Confidence
+- Technical understanding
+- Correctness of the answer
 - Areas requiring improvement
 
 ---
 
 ## 5. Student Skill Profile Generation
-
-After the assessment, the chatbot shall generate a complete student profile containing:
+After the assessment, the chatbot shall generate a summary containing:
 
 - Technical strengths
-- Technical weaknesses
-- Skill ratings
-- Confidence assessment
-- Critical thinking analysis
-- Learning mindset
-- Career readiness
+- Areas for improvement
+- Overall rating
+- Learning recommendations
 
 ---
 
 ## 6. Recommendation System
-
 The chatbot shall recommend:
 
 - Topics to improve
-- Technologies to learn next
-- Suitable projects
-- Learning roadmap
+- Suggested learning resources
+- Next technology to learn
 
 ---
 
 ## 7. Assessment Report
 
-The chatbot shall generate a final report including:
+The final report shall include:
 
 - Overall Rating
-- Skill-wise Ratings
 - Strengths
-- Weaknesses
-- Recommendations
-- Growth Summary
+- Areas for Improvement
+- Learning Recommendations
 
 ---
 
