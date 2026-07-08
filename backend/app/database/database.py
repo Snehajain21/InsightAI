@@ -1,15 +1,19 @@
-from sqlmodel import SQLModel, create_engine
+from sqlmodel import SQLModel, create_engine, Session
 
-# Import models so SQLModel knows about them
+# Import models
 from app.models.assessment import AssessmentSession, AssessmentAnswer
 
 DATABASE_URL = "sqlite:///insightai.db"
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(
+    DATABASE_URL,
+    echo=True
+)
 
 
 def create_db_and_tables():
-    """
-    Create all database tables.
-    """
     SQLModel.metadata.create_all(engine)
+
+
+def get_session():
+    return Session(engine)
