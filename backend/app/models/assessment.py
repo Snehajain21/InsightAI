@@ -11,6 +11,7 @@ class AssessmentSession(SQLModel, table=True):
     student_name: str
     selected_skill: str
 
+    # Stores generated interview questions as a JSON string
     questions: Optional[str] = None
 
     overall_rating: Optional[str] = None

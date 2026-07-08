@@ -27,3 +27,40 @@ Return ONLY valid JSON in this format:
 
 Do not include any explanation or extra text.
 """
+
+def generate_report_prompt(skill: str, interview_data: str) -> str:
+    """
+    Prompt to evaluate the student's interview answers.
+    """
+
+    return f"""
+You are an AI Interview Coach.
+
+A student completed a technical interview for the skill: {skill}.
+
+Below are the interview questions and the student's answers.
+
+{interview_data}
+
+Evaluate the student's performance.
+
+Return ONLY valid JSON in this format:
+
+{{
+  "overall_rating": "8/10",
+  "strengths": [
+    "...",
+    "..."
+  ],
+  "improvement_areas": [
+    "...",
+    "..."
+  ],
+  "recommendations": [
+    "...",
+    "..."
+  ]
+}}
+
+Do not return any explanation outside the JSON.
+"""
