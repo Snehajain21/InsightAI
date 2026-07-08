@@ -8,8 +8,13 @@ from app.schemas.assessment_schema import (
     StartAssessmentRequest,
     StartAssessmentResponse,
 )
+import json
+
+from app.services.assessment_service import save_generated_questions
 from app.schemas.assessment_schema import ReportRequest
 from app.services.assessment_service import generate_report
+from app.services.gemini_service import generate_questions
+from app.services.assessment_service import get_next_question
 
 router = APIRouter(
     prefix="/assessment",
@@ -34,10 +39,17 @@ def start_assessment(request: StartAssessmentRequest):
     session.commit()
     session.refresh(assessment)
 
-    return StartAssessmentResponse(
-        session_id=assessment.id,
-        message="Assessment started successfully."
+    assessment = save_generated_questions(
+        session=session,
+        assessment=assessment
     )
+
+    questions = json.loads(assessment.questions)
+
+    return {
+        "session_id": assessment.id,
+        "first_question": questions[0]
+    }
 
 @router.post("/answer")
 def submit_answer(request: SubmitAnswerRequest):
@@ -47,12 +59,26 @@ def submit_answer(request: SubmitAnswerRequest):
     save_answer(
         session=session,
         session_id=request.session_id,
+        question_number=request.question_number,
         question=request.question,
         answer=request.answer
     )
 
+    next_question = get_next_question(
+        session=session,
+        session_id=request.session_id,
+        question_number=request.question_number
+    )
+
+    if next_question is None:
+        return {
+            "completed": True,
+            "message": "Interview completed."
+        }
+
     return {
-        "message": "Answer submitted successfully."
+        "completed": False,
+        "next_question": next_question
     }
 
 
@@ -72,3 +98,8 @@ def get_report(request: ReportRequest):
         }
 
     return report
+
+@router.get("/gemini-test")
+def gemini_test(skill: str = "Python"):
+
+    return generate_questions(skill)

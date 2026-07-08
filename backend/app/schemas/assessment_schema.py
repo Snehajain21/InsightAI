@@ -8,11 +8,12 @@ class StartAssessmentRequest(BaseModel):
 
 class StartAssessmentResponse(BaseModel):
     session_id: int
-    message: str
+    first_question: str
 
 
 class SubmitAnswerRequest(BaseModel):
     session_id: int
+    question_number: int
     question: str
     answer: str
 
