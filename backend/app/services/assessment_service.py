@@ -36,7 +36,10 @@ def save_answer(
 
     return assessment_answer
 
-def save_generated_questions(session, assessment):
+def save_generated_questions(
+    session: Session,
+    assessment: AssessmentSession,
+):
     """
     Generate interview questions and save them in the database.
     """
@@ -62,6 +65,9 @@ def get_next_question(session, session_id: int, question_number: int):
 
     assessment = session.get(AssessmentSession, session_id)
 
+    if assessment is None:
+      return None
+
     questions = json.loads(assessment.questions)
 
     if question_number >= len(questions):
@@ -82,13 +88,15 @@ def prepare_interview_data(session, session_id: int):
 
     answers = session.exec(statement).all()
 
-    interview_data = ""
+    lines = []
 
     for item in answers:
-        interview_data += (
+        lines.append(
             f"Question: {item.question}\n"
-            f"Answer: {item.answer}\n\n"
+            f"Answer: {item.answer}\n"
         )
+
+    interview_data = "\n".join(lines)
 
     return interview_data
 
@@ -113,6 +121,8 @@ def generate_assessment_report(session, session_id: int):
     )
 
     assessment.overall_rating = report["overall_rating"]
+    assessment.summary_report = json.dumps(report)
+    
 
     session.add(assessment)
     session.commit()

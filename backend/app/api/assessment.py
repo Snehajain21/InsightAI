@@ -3,6 +3,8 @@ import json
 from fastapi import HTTPException
 from app.database.database import get_session
 from app.models.assessment import AssessmentSession
+from fastapi import Depends
+from sqlmodel import Session
 
 from app.schemas.assessment_schema import (
     StartAssessmentRequest,
@@ -26,15 +28,20 @@ router = APIRouter(
 )
 
 
+
+
+
 @router.post(
     "/start",
     response_model=StartAssessmentResponse
 )
-def start_assessment(request: StartAssessmentRequest):
+def start_assessment(
+    request: StartAssessmentRequest,
+    session: Session = Depends(get_session)
+):
 
     try:
-        session = get_session()
-
+       
         assessment = AssessmentSession(
             student_name=request.student_name,
             selected_skill=request.selected_skill
@@ -56,18 +63,23 @@ def start_assessment(request: StartAssessmentRequest):
             "first_question": questions[0]
         }
 
-    except Exception as e:
+    except Exception:
         raise HTTPException(
             status_code=500,
-            detail=f"Unable to start assessment: {str(e)}"
+            detail="Unable to start assessment. Please try again."
         )
 
+
+
+
 @router.post("/answer")
-def submit_answer(request: SubmitAnswerRequest):
+def submit_answer(
+    request: SubmitAnswerRequest,
+    session: Session = Depends(get_session)
+):
 
     try:
-        session = get_session()
-
+      
         save_answer(
             session=session,
             session_id=request.session_id,
@@ -93,19 +105,23 @@ def submit_answer(request: SubmitAnswerRequest):
             "next_question": next_question
         }
 
-    except Exception as e:
+    except Exception:
         raise HTTPException(
             status_code=500,
-            detail=f"Unable to submit answer: {str(e)}"
+            detail="Unable to submit assessment. Please try again."
         )
 
 
+
+
 @router.post("/report")
-def get_report(request: ReportRequest):
+def get_report(
+    request: ReportRequest,
+    session: Session = Depends(get_session)
+):
 
     try:
-        session = get_session()
-
+      
         report = generate_assessment_report(
             session=session,
             session_id=request.session_id
@@ -122,9 +138,9 @@ def get_report(request: ReportRequest):
     except HTTPException:
         raise
 
-    except Exception as e:
+    except Exception:
         raise HTTPException(
             status_code=500,
-            detail=f"Unable to generate assessment report: {str(e)}"
+           detail="Unable to generate assessment report. Please try again."
         )
 

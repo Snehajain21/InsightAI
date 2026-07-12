@@ -28,3 +28,12 @@ export const submitAnswer = async (
 
   return response.data;
 };
+
+
+export const generateReport = async (sessionId) => {
+  const response = await API.post("/assessment/report", {
+    session_id: sessionId,
+  });
+
+  return response.data;
+};

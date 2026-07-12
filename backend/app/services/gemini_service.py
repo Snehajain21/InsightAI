@@ -46,6 +46,8 @@ def generate_report(skill: str, interview_data: str):
 
         response = model.generate_content(prompt)
 
+      
+
         response_text = response.text
         response_text = response_text.replace("```json", "")
         response_text = response_text.replace("```", "")
