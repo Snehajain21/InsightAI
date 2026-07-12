@@ -1,50 +1,51 @@
-# InsightAI – AI Student Skill Analyzer 🚀
+# 🚀 InsightAI – AI Student Skill Analyzer
 
-InsightAI is an AI-powered chatbot designed for Computer Science students to assess their understanding of a selected programming skill or technology. The chatbot asks a fixed set of 3–5 assessment questions, evaluates the student's responses using the Google Gemini API, and generates a summary report with an overall rating, strengths, areas for improvement, and learning recommendations.
+InsightAI is an AI-powered interview assessment platform that helps Computer Science students evaluate their technical skills through AI-generated interview questions.
 
----
-
-## 📌 Project Overview
-
-Many students learn programming languages and technologies but are unsure about their actual level of understanding. They often find it difficult to identify the topics they need to improve before moving on to more advanced concepts.
-
-InsightAI addresses this problem by providing a simple AI-powered assessment that helps students evaluate their knowledge and receive personalized learning recommendations.
+The application conducts a short technical interview, evaluates the student's responses using Google's Gemini API, and generates a personalized assessment report with strengths, improvement areas, learning recommendations, learning resources, and the next skill to learn.
 
 ---
 
 ## ✨ Features
 
-* 🤖 AI-powered skill assessment
-* ❓ Fixed 3–5 question assessment flow
-* 📝 AI evaluation of student responses
-* ⭐ Overall assessment rating
-* 💪 Strengths and areas for improvement
-* 📚 Personalized learning recommendations
-* 📄 AI-generated assessment report
-
+- 👤 Student profile collection
+- 💻 Skill-based interview assessment
+- 🤖 AI-generated interview questions using Gemini
+- 📝 AI evaluation of responses
+- 📊 Overall performance rating
+- ✅ Strengths analysis
+- 📈 Improvement areas
+- 💡 Learning recommendations
+- 📚 Suggested learning resources
+- 🚀 Next skill recommendation
+- 💾 SQLite database integration
+- ⚡ Modern React + FastAPI architecture
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Tech Stack
 
 ### Frontend
-
-* React.js
+- React.js
+- Tailwind CSS
+- Axios
+- Lucide React
 
 ### Backend
+- FastAPI
+- SQLModel
+- SQLite
+- Pydantic
 
-* FastAPI
+### AI
+- Google Gemini API (gemini-2.5-flash)
 
-### AI Model
+### Programming Language
+- Python
+- JavaScript
 
-* Google Gemini API
-
-### Database
-
-* SQLite
-
-### Version Control
-
-* Git & GitHub
+### Development Tools
+- Visual Studio Code
+- Git & GitHub
 
 ---
 
@@ -54,26 +55,186 @@ InsightAI addresses this problem by providing a simple AI-powered assessment tha
 InsightAI/
 │
 ├── backend/
+│   ├── app/
+│   │   ├── api/
+│   │   ├── database/
+│   │   ├── models/
+│   │   ├── prompts/
+│   │   ├── schemas/
+│   │   ├── services/
+│   │   ├── config.py
+│   │   └── main.py
+│   ├── requirements.txt
+│   └── .env
+│
 ├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│
 ├── docs/
-├── README.md
-├── requirements.txt
-└── .gitignore
+│
+└── README.md
 ```
 
 ---
 
-## 🚀 Future Enhancements
+## 🎯 Key Features
 
-* Adaptive question generation
-* Assessment history
-* User authentication
-* Resume analysis
-* Voice-based assessment
-* Multi-domain assessments
+- AI-generated interview questions based on the selected skill.
+- Interactive interview experience with a progress tracker.
+- AI evaluation of interview responses.
+- Personalized assessment report.
+- Learning recommendations and resources.
+- Suggested next skill to learn.
+- Responsive and modern user interface.
+- SQLite database for assessment storage.
 
 ---
 
-## 👩‍💻 Author
+## ⚙️ Installation
 
-Developed as part of an AI Internship Project.
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/InsightAI.git
+```
+
+```bash
+cd InsightAI
+```
+
+---
+
+### 2. Backend Setup
+
+```bash
+cd backend
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate the virtual environment.
+
+**Windows**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux / macOS**
+
+```bash
+source venv/bin/activate
+```
+
+Install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `.env` file inside the backend folder:
+
+```env
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+```
+
+Start the backend server:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Backend URL:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## 💻 Frontend Setup
+
+Open a new terminal.
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the React development server:
+
+```bash
+npm run dev
+```
+
+Frontend URL:
+
+```
+http://localhost:5173
+```
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/assessment/start` | Start a new assessment |
+| POST | `/assessment/answer` | Submit an interview answer |
+| POST | `/assessment/report` | Generate the final AI assessment report |
+
+---
+
+## 📷 Application Screenshots
+
+### 🏠 Welcome Page
+
+![Welcome Page](README_images/welcome.png)
+
+
+---
+
+### 💬 Interview Page
+
+![Interview Page](README_images/interview.png)
+
+---
+
+### 📊 Assessment Report
+![Assessment Report](README_images/report.png)
+
+
+---
+
+## 🌱 Future Enhancements
+
+- Adaptive AI-generated interview questions
+- User authentication
+- Assessment history
+- Resume analysis
+- Voice-based interviews
+- Multi-domain assessments
+- Performance analytics dashboard
+
+
+---
+
+## 👨‍💻 Author
+
+**Sneha Jain**
+
+B.Tech Computer Science Student
+
+Built as a Summer Internship Project using React, FastAPI, SQLite, and Google Gemini API.
